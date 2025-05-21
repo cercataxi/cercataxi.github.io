@@ -30,21 +30,32 @@
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://cerca.taxi" />
-
   <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
+
   <style>
-    body {
+    /* === Base Styles === */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Bebas Neue', sans-serif;
       background-color: #000;
       color: #FFD700;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      position: relative;
       overflow-x: hidden;
+      position: relative;
     }
 
     body::before {
@@ -63,11 +74,13 @@
     }
 
     header,
-    .container {
+    .container,
+    footer {
       position: relative;
       z-index: 1;
     }
 
+    /* === Header / Top Bar === */
     header {
       background-color: #FFD700;
       color: black;
@@ -108,9 +121,19 @@
     nav a {
       text-decoration: none;
       color: black;
-      font-weight: bold;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: normal;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
     }
 
+    nav a:hover {
+      color: #555;
+    }
+
+    /* === Main Content === */
     .container {
       padding: 2rem;
       text-align: center;
@@ -131,6 +154,7 @@
       font-size: 1.2rem;
       max-width: 600px;
       margin: 0 auto 2rem;
+      font-weight: normal;
     }
 
     .video-container {
@@ -185,7 +209,42 @@
       background-color: #e6c200;
     }
 
-    /* --- Responsive adjustments --- */
+    /* === Footer === */
+    footer {
+      overflow: hidden;
+      background-color: #000;
+      color: #FFD700;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      padding: 1rem 0;
+      white-space: nowrap;
+    }
+
+    .marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 40s linear infinite;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* === Responsive === */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -215,7 +274,7 @@
       }
 
       nav a {
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
 
       h1 {
@@ -226,24 +285,14 @@
         font-size: 1rem;
       }
     }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: #FFD700;
-      background-color: #000;
-      position: relative;
-      z-index: 1;
-    }
   </style>
 </head>
 
 <body>
+  <!-- Header -->
   <header>
     <div class="left-header">
-      <a href="https://cerca.taxi" target="_self">
+      <a href="https://cerca.taxi">
         <img src="cerca.taxi_logo.png" alt="CERCA.TAXI logo" class="logo" />
       </a>
       <a href="https://www.instagram.com" target="_blank">
@@ -262,12 +311,12 @@
     </nav>
   </header>
 
+  <!-- Main Content -->
   <div class="container">
     <h1>CERCA.TAXI</h1>
     <h2>Your TAXI Matchmaker</h2>
     <p>
-      Welcome to the easiest way to find a taxi or a passenger.
-      <br>
+      Welcome to the easiest way to find a taxi or a passenger.<br>
       Whether you're a driver or a passenger, this is your perfect match point.
     </p>
 
@@ -281,10 +330,15 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer>
-    Powered by LOGFORCE
+    <div class="marquee">
+      <div class="marquee-content">
+        CERCA.TAXI – Powered by LOGFORCE – is 100% FREE for users, with transparent fares and no surprises. Only
+        licensed drivers,
+        verified by local authorities, are available. You will always be shown the taxi’s license number and
+        registration plate before your ride.
+      </div>
+    </div>
   </footer>
-
 </body>
-
-</html>
