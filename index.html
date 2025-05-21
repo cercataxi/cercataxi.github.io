@@ -1,33 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CERCA.TAXI</title>
+  <title>CERCA.TAXI 🔥 Your TAXI Matchmaker</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="CERCA.TAXI helps you easily find a taxi or a passenger. The smart and fast matchmaker for urban transportation.">
+  <meta name="keywords"
+    content="barcelona, match, taxi, passenger, cerca.taxi, taxi app, find a taxi, ride match, urban mobility">
+  <meta name="author" content="CERCA.TAXI">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
+  <meta property="og:description"
+    content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
+  <meta property="og:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
+  <meta property="og:url" content="https://cerca.taxi" />
+  <meta property="og:type" content="website" />
+
+  <!-- X former Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
+  <meta name="twitter:description"
+    content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
+  <meta name="twitter:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://cerca.taxi" />
+
   <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
       background-color: #000;
+      color: #FFD700;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('cerca.taxi_logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      opacity: 0.09;
+      z-index: 0;
+    }
+
+    header,
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      background-color: #FFD700;
+      color: black;
+      height: 64px;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .left-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .left-header img.logo {
+      height: 40px;
+      display: block;
+    }
+
+    .left-header a img:not(.logo) {
+      height: 24px;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 2rem;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0.5rem 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin-bottom: 2rem;
+      border: 3px solid #FFD700;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease-in 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .buttons {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
-    img {
-      max-width: 80%;
-      height: auto;
+    .btn {
+      background-color: #FFD700;
+      color: black;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      min-width: 200px;
     }
 
-    @media (max-width: 768px) {
-      img {
-        max-width: 90%;
+    .btn:hover {
+      background-color: #e6c200;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 0.5rem;
+      }
+
+      .left-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
+
 <body>
-  <img src="cerca.taxi_logo.png" alt="cerca.taxi logo" />
+  <header>
+    <div class="left-header">
+      <a href="https://cerca.taxi" target="_self">
+        <img src="cerca.taxi_logo.png" alt="CERCA.TAXI logo" class="logo" />
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="instagram.png" alt="Instagram" />
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="youtube.png" alt="YouTube" />
+      </a>
+    </div>
+
+    <nav>
+      <a href="#">How It Works</a>
+      <a href="#">About</a>
+      <a href="#">Language</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>CERCA.TAXI</h1>
+    <h2>Your TAXI Matchmaker</h2>
+    <p>
+      Welcome to the easiest way to find a taxi or a passenger.
+      <br>
+      Whether you're a driver or a passenger, this is your perfect match point.
+    </p>
+
+    <div class="video-container fade-in">
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="buttons">
+      <button class="btn">I'M LOOKING FOR A TAXI</button>
+      <button class="btn">I'M LOOKING FOR A PASSENGER</button>
+    </div>
+  </div>
 </body>
+
 </html>
