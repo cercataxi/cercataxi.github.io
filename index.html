@@ -342,11 +342,21 @@
         registration plate before your ride.
       </div>
     </div>
+
+    <!-- Cookie Consent Prompt -->
+    <div id="cookie-consent"
+      style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 1rem; display: none; z-index: 9999; text-align: center; font-family: 'Bebas Neue', sans-serif;">
+      <p style="margin-bottom: 1rem;">We use cookies to find your match in no time!</p>
+      <button onclick="handleCookieConsent(true)"
+        style="background: #FFD700; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; margin-right: 1rem; cursor: pointer;">Accept</button>
+      <button onclick="handleCookieConsent(false)"
+        style="background: #555; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer;">Refuse</button>
+    </div>
   </footer>
   <script>
     const countdownElement = document.getElementById('countdown-launch');
 
-    // CERCA.TAXI Launch date
+    // CERCA.TAXI launch date
     const launchDate = new Date('June 15, 2025 00:00:00').getTime();
 
     function updateCountdown() {
@@ -368,7 +378,23 @@
     }
 
     const timerInterval = setInterval(updateCountdown, 1000);
-    updateCountdown(); // inizializza subito
+    updateCountdown();
+  </script>
+
+  <script>
+    function handleCookieConsent(accepted) {
+      localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'refused');
+      document.getElementById('cookie-consent').style.display = 'none';
+      // Optionally, trigger analytics setup here if accepted
+    }
+
+    // Show prompt only if not already set
+    window.addEventListener('DOMContentLoaded', () => {
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        document.getElementById('cookie-consent').style.display = 'block';
+      }
+    });
   </script>
 
 </body>
