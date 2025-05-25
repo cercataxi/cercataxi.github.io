@@ -33,12 +33,6 @@
   <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
-
   <style>
     /* === Base Styles === */
     * {
@@ -285,6 +279,68 @@
         font-size: 1rem;
       }
     }
+
+    /* === Modal === */
+    .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      inset: 0;
+      /* più pulito di top/left/width/height */
+      z-index: 10000;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      width: 90vw;
+      height: 90vh;
+      background-color: #FFD700;
+      color: black;
+      padding: 0 10%;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border: 1px solid #888;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font-family: 'Bebas Neue', sans-serif;
+      position: relative;
+      overflow-y: auto;
+
+      transform: scale(0.95);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal .close {
+      color: black;
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal .close:hover {
+      color: #333;
+    }
   </style>
 </head>
 
@@ -300,6 +356,9 @@
       </a>
       <a href="https://www.youtube.com/@cercataxi" target="_blank">
         <img src="youtube.png" alt="CERCA.TAXI on YouTube" />
+      </a>
+      <a href="https://www.youtube.com/@cercataxi?sub_confirmation=1" target="_blank">
+        <img src="subscribe.png" alt="Follow CERCA.TAXI on YouTube" />
       </a>
     </div>
 
@@ -326,7 +385,7 @@
     </div>
 
     <div class="buttons">
-      <button class="btn"><b>I'M LOOKING FOR A TAXI</button>
+      <button class="btn"><b>I'M LOOKING FOR A TAXI</b></button>
       <button class="btn">I'M LOOKING FOR A PASSENGER</button>
     </div>
   </div>
@@ -353,6 +412,15 @@
         style="background: #555; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer;">Refuse</button>
     </div>
   </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-body">Loading...</div>
+    </div>
+  </div>
+
   <script>
     const countdownElement = document.getElementById('countdown-launch');
 
@@ -395,6 +463,48 @@
         document.getElementById('cookie-consent').style.display = 'block';
       }
     });
+  </script>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modal-body");
+    const closeBtn = document.querySelector(".modal .close");
+
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const section = e.target.textContent.toLowerCase().replace(/\s+/g, '_');
+        showModal(section + ".html");
+      });
+    });
+
+    function showModal(file) {
+      modal.classList.add("show");
+
+      fetch(file)
+        .then(response => response.ok ? response.text() : Promise.reject("Not found"))
+        .then(html => {
+          modalContent.innerHTML = html;
+        })
+        .catch(() => {
+          modalContent.innerHTML = "<p>🚕 404 – You're Lost, but Not Alone!</p>";
+        });
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      setTimeout(() => {
+        modalContent.innerHTML = "Loading...";
+      }, 400);
+    }
+
+    closeBtn.onclick = closeModal;
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
   </script>
 
 </body>
