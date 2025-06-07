@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERCA.TAXI 🔥 Your TAXI Matchmaker</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="CERCA.TAXI helps you easily find a taxi or a passenger. The smart and fast matchmaker for urban transportation.">
+  <meta name="keywords"
+    content="barcelona, match, taxi, passenger, cerca.taxi, taxi app, find a taxi, ride match, urban mobility">
+  <meta name="author" content="CERCA.TAXI">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
+  <meta property="og:description"
+    content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
+  <meta property="og:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
+  <meta property="og:url" content="https://cerca.taxi" />
+  <meta property="og:type" content="website" />
+
+  <!-- X former Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
+  <meta name="twitter:description"
+    content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
+  <meta name="twitter:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://cerca.taxi" />
+  <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Base Styles === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+      background-color: #000;
+      color: #FFD700;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('cerca.taxi_logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      opacity: 0.09;
+      z-index: 0;
+    }
+
+    header,
+    .container,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* === Header / Top Bar === */
+    header {
+      background-color: #FFD700;
+      color: black;
+      height: 64px;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .left-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .left-header img {
+      flex-shrink: 0;
+    }
+
+    .left-header img.logo {
+      height: 40px;
+      display: block;
+    }
+
+    .left-header a img:not(.logo) {
+      height: 24px;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: normal;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #555;
+    }
+
+    /* === Main Content === */
+    .container {
+      padding: 2rem;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0.5rem 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-weight: normal;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin-bottom: 2rem;
+      border: 3px solid #FFD700;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease-in 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background-color: #FFD700;
+      color: black;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      min-width: 200px;
+    }
+
+    .btn:hover {
+      background-color: #e6c200;
+    }
+
+    /* === Footer === */
+    footer {
+      overflow: hidden;
+      background-color: #FFD700;
+      color: #000;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      padding: 1rem 0;
+      white-space: nowrap;
+    }
+
+    .marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 40s linear infinite;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* === Responsive === */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 1rem;
+      }
+
+      .left-header {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .left-header a img:not(.logo) {
+        height: 20px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 0.5rem;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+      }
+    }
+
+    /* === Modal === */
+    .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      inset: 0;
+      /* più pulito di top/left/width/height */
+      z-index: 10000;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      width: 90vw;
+      height: 90vh;
+      background-color: #FFD700;
+      color: black;
+      padding: 0 10%;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border: 1px solid #888;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font-family: 'Bebas Neue', sans-serif;
+      position: relative;
+      overflow-y: auto;
+
+      transform: scale(0.95);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal .close {
+      color: black;
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal .close:hover {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="left-header">
+      <a href="https://cerca.taxi">
+        <img src="cerca.taxi_logo.png" alt="CERCA.TAXI logo" class="logo" />
+      </a>
+      <a href="https://www.instagram.com/cerca.taxi/" target="_blank">
+        <img src="instagram.png" alt="CERCA.TAXI on Instagram" />
+      </a>
+      <a href="https://www.youtube.com/@cercataxi" target="_blank">
+        <img src="youtube.png" alt="CERCA.TAXI on YouTube" />
+      </a>
+      <a href="https://www.youtube.com/@cercataxi?sub_confirmation=1" target="_blank">
+        <img src="subscribe.png" alt="Follow CERCA.TAXI on YouTube" />
+      </a>
+    </div>
+
+    <nav>
+      <a href="#">About</a>
+      <a href="#">Language</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Stats</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>CERCA.TAXI</h1>
+    <h2>Your TAXI Matchmaker</h2>
+    <p>
+      Welcome to the easiest way to find a taxi or a passenger.<br>
+      Whether you're a driver or a passenger, this is your perfect match point.
+    </p>
+
+    <div class="video-container fade-in">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScQtD_vQYH9_C1O89iJK9MLF0DMemMCm5wGCTWuyg0ct2H9-Q/viewform?embedded=true"
+        width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
+    </div>
+
+    <div class="buttons">
+      <button class="btn"><b>I'M LOOKING FOR A TAXI</b></button>
+      <button class="btn">I'M LOOKING FOR A PASSENGER</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="marquee">
+      <div class="marquee-content">
+        CERCA.TAXI – <span id="countdown-launch">Launching in June 2025</span> – is 100% FREE for users, with
+        transparent fares and no surprises. Only
+        licensed drivers,
+        verified by local authorities, are available. You will always be shown the taxi’s license number and
+        registration plate before your ride.
+      </div>
+    </div>
+
+    <!-- Cookie Consent Prompt -->
+    <div id="cookie-consent"
+      style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 1rem; display: none; z-index: 9999; text-align: center; font-family: 'Bebas Neue', sans-serif;">
+      <p style="margin-bottom: 1rem;">We use cookies to find your match in no time!</p>
+      <button onclick="handleCookieConsent(true)"
+        style="background: #FFD700; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; margin-right: 1rem; cursor: pointer;">Accept</button>
+      <button onclick="handleCookieConsent(false)"
+        style="background: #555; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer;">Refuse</button>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-body">Loading...</div>
+    </div>
+  </div>
+
+  <script>
+    const countdownElement = document.getElementById('countdown-launch');
+
+    // CERCA.TAXI launch date
+    const launchDate = new Date('June 15, 2025 00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance <= 0) {
+        countdownElement.innerText = "Launched!";
+        clearInterval(timerInterval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerText = `Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    const timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+  <script>
+    function handleCookieConsent(accepted) {
+      localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'refused');
+      document.getElementById('cookie-consent').style.display = 'none';
+      // Optionally, trigger analytics setup here if accepted
+    }
+
+    // Show prompt only if not already set
+    window.addEventListener('DOMContentLoaded', () => {
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        document.getElementById('cookie-consent').style.display = 'block';
+      }
+    });
+  </script>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modal-body");
+    const closeBtn = document.querySelector(".modal .close");
+
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const section = e.target.textContent.toLowerCase().replace(/\s+/g, '_');
+        showModal(section + ".html");
+      });
+    });
+
+    function showModal(file) {
+      modal.classList.add("show");
+
+      fetch(file)
+        .then(response => response.ok ? response.text() : Promise.reject("Not found"))
+        .then(html => {
+          modalContent.innerHTML = html;
+        })
+        .catch(() => {
+          modalContent.innerHTML = "<p>🚕 404 – You're Lost, but Not Alone!</p>";
+        });
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      setTimeout(() => {
+        modalContent.innerHTML = "Loading...";
+      }, 400);
+    }
+
+    closeBtn.onclick = closeModal;
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
