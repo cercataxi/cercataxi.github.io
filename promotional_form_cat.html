@@ -6,14 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CERCA.TAXI 🔥 Your TAXI Matchmaker</title>
 
-  <!-- SEO Meta Tags -->
   <meta name="description"
     content="CERCA.TAXI helps you easily find a taxi or a passenger. The smart and fast matchmaker for urban transportation.">
   <meta name="keywords"
     content="barcelona, match, taxi, passenger, cerca.taxi, taxi app, find a taxi, ride match, urban mobility">
   <meta name="author" content="CERCA.TAXI">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
   <meta property="og:description"
     content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
@@ -21,14 +19,12 @@
   <meta property="og:url" content="https://cerca.taxi" />
   <meta property="og:type" content="website" />
 
-  <!-- X former Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
   <meta name="twitter:description"
     content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
   <meta name="twitter:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
 
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://cerca.taxi" />
   <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -41,17 +37,25 @@
       box-sizing: border-box;
     }
 
+    /* Essential for vertical flexbox to work correctly */
+    html,
+    body {
+      height: 100%;
+    }
+
     body {
       font-family: 'Bebas Neue', sans-serif;
       background-color: #000;
       color: #FFD700;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      /* Arrange children vertically */
       overflow-x: hidden;
+      /* Prevent horizontal scrollbars */
       position: relative;
     }
 
+    /* Background image with opacity */
     body::before {
       content: "";
       position: absolute;
@@ -67,6 +71,7 @@
       z-index: 0;
     }
 
+    /* Ensure header, container, and footer are above the background overlay */
     header,
     .container,
     footer {
@@ -79,11 +84,14 @@
       background-color: #FFD700;
       color: black;
       height: 64px;
+      /* Fixed height for the header */
       padding: 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: nowrap;
+      flex-shrink: 0;
+      /* Prevent header from shrinking */
     }
 
     .left-header {
@@ -94,6 +102,7 @@
 
     .left-header img {
       flex-shrink: 0;
+      /* Prevent images from shrinking */
     }
 
     .left-header img.logo {
@@ -132,16 +141,30 @@
       padding: 2rem;
       text-align: center;
       flex-grow: 1;
+      /* Allows the container to take up remaining vertical space */
+      display: flex;
+      flex-direction: column;
+      /* Stack children vertically */
+      justify-content: flex-start;
+      /* Align content to the top */
+      align-items: center;
+      /* Center content horizontally */
+      overflow: hidden;
+      /* Hide any overflow within the container */
     }
 
     h1 {
       font-size: 3rem;
       margin: 0.5rem 0;
+      flex-shrink: 0;
+      /* Prevent heading from shrinking */
     }
 
     h2 {
       font-size: 1.5rem;
       margin-bottom: 2rem;
+      flex-shrink: 0;
+      /* Prevent subheading from shrinking */
     }
 
     p {
@@ -185,6 +208,8 @@
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
+      flex-shrink: 0;
+      /* Prevent buttons from shrinking */
     }
 
     .btn {
@@ -212,6 +237,8 @@
       font-size: 0.75rem;
       padding: 1rem 0;
       white-space: nowrap;
+      flex-shrink: 0;
+      /* Prevent footer from shrinking */
     }
 
     .marquee {
@@ -238,7 +265,7 @@
       }
     }
 
-    /* === Responsive === */
+    /* === Responsive Styles === */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -280,14 +307,14 @@
       }
     }
 
-    /* === Modal === */
+    /* === Modal Styles === */
     .modal {
       display: flex;
       justify-content: center;
       align-items: center;
       position: fixed;
       inset: 0;
-      /* più pulito di top/left/width/height */
+      /* Shorthand for top/left/right/bottom: 0; */
       z-index: 10000;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -341,11 +368,63 @@
     .modal .close:hover {
       color: #333;
     }
+
+    /* NEW CSS for the Google Form iframe optimization */
+    .google-form-wrapper {
+      flex-grow: 1;
+      /* Allows the wrapper to expand and take up remaining vertical space within .container */
+      width: 100%;
+      /* Occupy full width of its parent */
+      display: flex;
+      /* Enable flexbox for its content (the iframe) */
+      justify-content: center;
+      /* Center iframe horizontally */
+      align-items: stretch;
+      /* Make iframe stretch vertically to fill the wrapper's height */
+      overflow: hidden;
+      /* Hide scrollbars of the wrapper */
+      margin-top: 1rem;
+      /* Space above the form */
+      margin-bottom: 2rem;
+      /* Space below the form */
+    }
+
+    .google-form-wrapper iframe {
+      width: 100%;
+      /* Iframe takes 100% width of its wrapper */
+      height: 100%;
+      /* Iframe takes 100% height of its wrapper */
+      border: none;
+      /* Remove default iframe border */
+    }
+
+    /* Adjustments for smaller screens (mobile) */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+        /* Reduce container padding on small screens */
+      }
+
+      .google-form-wrapper {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        /* Reduce title font size */
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        /* Reduce subtitle font size */
+        margin-bottom: 1rem;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header>
     <div class="left-header">
       <a href="https://cerca.taxi">
@@ -370,28 +449,20 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
   <div class="container">
-    <h1>CERCA.TAXI</h1>
-    <h2>Your TAXI Matchmaker</h2>
-    <p>
-      Welcome to the easiest way to find a taxi or a passenger.<br>
-      Whether you're a driver or a passenger, this is your perfect match point.
-    </p>
+    <h1>CERCA.TAXI | Driver</h1>
+    <h2>The tech that puts more in your pocket</h2>
 
-    <div class="video-container fade-in">
+    <div class="google-form-wrapper">
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScQtD_vQYH9_C1O89iJK9MLF0DMemMCm5wGCTWuyg0ct2H9-Q/viewform?embedded=true"
-        width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
+        frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
 
     <div class="buttons">
-      <button class="btn"><b>I'M LOOKING FOR A TAXI</b></button>
-      <button class="btn">I'M LOOKING FOR A PASSENGER</button>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="marquee">
       <div class="marquee-content">
@@ -403,7 +474,6 @@
       </div>
     </div>
 
-    <!-- Cookie Consent Prompt -->
     <div id="cookie-consent"
       style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 1rem; display: none; z-index: 9999; text-align: center; font-family: 'Bebas Neue', sans-serif;">
       <p style="margin-bottom: 1rem;">We use cookies to find your match in no time!</p>
@@ -414,10 +484,9 @@
     </div>
   </footer>
 
-  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close">×</span>
       <div id="modal-body">Loading...</div>
     </div>
   </div>
@@ -425,7 +494,7 @@
   <script>
     const countdownElement = document.getElementById('countdown-launch');
 
-    // CERCA.TAXI launch date
+    // CERCA.TAXI launch date (June 15, 2025)
     const launchDate = new Date('June 15, 2025 00:00:00').getTime();
 
     function updateCountdown() {
@@ -447,17 +516,17 @@
     }
 
     const timerInterval = setInterval(updateCountdown, 1000);
-    updateCountdown();
+    updateCountdown(); // Initial call to display immediately
   </script>
 
   <script>
     function handleCookieConsent(accepted) {
       localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'refused');
       document.getElementById('cookie-consent').style.display = 'none';
-      // Optionally, trigger analytics setup here if accepted
+      // Optionally, trigger analytics setup here if cookies are accepted
     }
 
-    // Show prompt only if not already set
+    // Show cookie consent prompt only if not already set
     window.addEventListener('DOMContentLoaded', () => {
       const consent = localStorage.getItem('cookieConsent');
       if (!consent) {
@@ -471,36 +540,44 @@
     const modalContent = document.getElementById("modal-body");
     const closeBtn = document.querySelector(".modal .close");
 
+    // Add click listeners to navigation links to open modal
     document.querySelectorAll("nav a").forEach(link => {
       link.addEventListener("click", (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default link behavior
+        // Determine the content file based on link text
         const section = e.target.textContent.toLowerCase().replace(/\s+/g, '_');
         showModal(section + ".html");
       });
     });
 
+    // Function to show the modal and load content
     function showModal(file) {
-      modal.classList.add("show");
+      modal.classList.add("show"); // Add 'show' class to make modal visible
 
+      // Fetch content from the specified file
       fetch(file)
         .then(response => response.ok ? response.text() : Promise.reject("Not found"))
         .then(html => {
-          modalContent.innerHTML = html;
+          modalContent.innerHTML = html; // Insert fetched HTML into modal body
         })
         .catch(() => {
-          modalContent.innerHTML = "<p>🚕 404 – You're Lost, but Not Alone!</p>";
+          modalContent.innerHTML = "<p>🚕 404 – You're Lost, but Not Alone!</p>"; // Display error if fetch fails
         });
     }
 
+    // Function to close the modal
     function closeModal() {
-      modal.classList.remove("show");
+      modal.classList.remove("show"); // Remove 'show' class to hide modal
+      // Reset modal content after transition
       setTimeout(() => {
         modalContent.innerHTML = "Loading...";
       }, 400);
     }
 
+    // Close modal when the close button is clicked
     closeBtn.onclick = closeModal;
 
+    // Close modal when clicking outside the modal content
     window.onclick = function (event) {
       if (event.target === modal) {
         closeModal();
@@ -509,3 +586,5 @@
   </script>
 
 </body>
+
+</html>
