@@ -387,8 +387,8 @@
     </div>
 
     <div class="buttons">
-      <button class="btn"><b>I'M LOOKING FOR A TAXI</b></button>
-      <button class="btn">I'M LOOKING FOR A PASSENGER</button>
+      <button class="btn" data-file="user_view.html"><b>I'M LOOKING FOR A TAXI</b></button>
+      <button class="btn" data-file="driver_view.html">I'M LOOKING FOR A PASSENGER</button>
     </div>
   </div>
 
@@ -396,11 +396,14 @@
   <footer>
     <div class="marquee">
       <div class="marquee-content">
-        CERCA.TAXI – <span id="countdown-launch">Launching in June 2025</span> – is 100% FREE for users, with
-        transparent fares and no surprises. Only
-        licensed drivers,
-        verified by local authorities, are available. You will always be shown the taxi’s license number and
-        registration plate before your ride.
+        We are excited to announce that CERCA.TAXI is ready for launch and is currently undergoing the accreditation
+        process with
+        &nbsp;
+        <img src="amb_logo.png" alt="Institution Logo" style="height: 1em; vertical-align: middle;">
+        &nbsp;
+        | CERCA.TAXI it is 100% FREE
+        for users, with transparent fares and no surprises. Only licensed drivers, verified by local authorities, are
+        available. You will always be shown the taxi’s license number and registration plate before your ride.
       </div>
     </div>
 
@@ -507,6 +510,16 @@
         closeModal();
       }
     }
+  </script>
+
+  <script>
+    // .btn listener
+    document.querySelectorAll(".btn[data-file]").forEach(button => {
+      button.addEventListener("click", () => {
+        const file = button.getAttribute("data-file");
+        showModal(file);
+      });
+    });
   </script>
 
 </body>

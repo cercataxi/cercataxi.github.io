@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CERCA.TAXI 🔥 Your TAXI Matchmaker</title>
+
+    <meta name="description"
+        content="CERCA.TAXI helps you easily find a taxi or a passenger. The smart and fast matchmaker for urban transportation.">
+    <meta name="keywords"
+        content="barcelona, match, taxi, passenger, cerca.taxi, taxi app, find a taxi, ride match, urban mobility">
+    <meta name="author" content="CERCA.TAXI">
+
+    <meta property="og:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
+    <meta property="og:description"
+        content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
+    <meta property="og:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
+    <meta property="og:url" content="https://cerca.taxi" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CERCA.TAXI 🔥 Your TAXI Matchmaker" />
+    <meta name="twitter:description"
+        content="Find your perfect taxi or passenger with CERCA.TAXI, the smart and fast matchmaker for urban transportation." />
+    <meta name="twitter:image" content="https://cerca.taxi/cerca.taxi_logo.png" />
+
+    <link rel="canonical" href="https://cerca.taxi" />
+    <link rel="icon" href="cerca.taxi_logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <style>
+        /* === Base Styles === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Essential for vertical flexbox to work correctly */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: #000;
+            color: #FFD700;
+            display: flex;
+            flex-direction: column;
+            /* Arrange children vertically */
+            overflow-x: hidden;
+            /* Prevent horizontal scrollbars */
+            position: relative;
+        }
+
+        /* Background image with opacity */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('cerca.taxi_logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            opacity: 0.09;
+            z-index: 0;
+        }
+
+        /* Ensure header, container, and footer are above the background overlay */
+        header,
+        .container,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === Header / Top Bar === */
+        header {
+            background-color: #FFD700;
+            color: black;
+            height: 64px;
+            /* Fixed height for the header */
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            flex-shrink: 0;
+            /* Prevent header from shrinking */
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .left-header img {
+            flex-shrink: 0;
+            /* Prevent images from shrinking */
+        }
+
+        .left-header img.logo {
+            height: 40px;
+            display: block;
+        }
+
+        .left-header a img:not(.logo) {
+            height: 24px;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: normal;
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #555;
+        }
+
+        /* === Main Content === */
+        .container {
+            padding: 2rem;
+            text-align: center;
+            flex-grow: 1;
+            /* Allows the container to take up remaining vertical space */
+            display: flex;
+            flex-direction: column;
+            /* Stack children vertically */
+            justify-content: flex-start;
+            /* Align content to the top */
+            align-items: center;
+            /* Center content horizontally */
+            overflow: hidden;
+            /* Hide any overflow within the container */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0.5rem 0;
+            flex-shrink: 0;
+            /* Prevent heading from shrinking */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            flex-shrink: 0;
+            /* Prevent subheading from shrinking */
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: normal;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin-bottom: 2rem;
+            border: 3px solid #FFD700;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            /* Prevent buttons from shrinking */
+        }
+
+        .btn {
+            background-color: #FFD700;
+            color: black;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            background-color: #e6c200;
+        }
+
+        /* === Footer === */
+        footer {
+            overflow: hidden;
+            background-color: #FFD700;
+            color: #000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.75rem;
+            padding: 1rem 0;
+            white-space: nowrap;
+            flex-shrink: 0;
+            /* Prevent footer from shrinking */
+        }
+
+        .marquee {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 40s linear infinite;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* === Responsive Styles === */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 1rem;
+            }
+
+            .left-header {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 10px;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .left-header a img:not(.logo) {
+                height: 20px;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: space-around;
+                margin-top: 0.5rem;
+                gap: 5px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+            }
+        }
+
+        /* === Modal Styles === */
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            inset: 0;
+            /* Shorthand for top/left/right/bottom: 0; */
+            z-index: 10000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            width: 90vw;
+            height: 90vh;
+            background-color: #FFD700;
+            color: black;
+            padding: 0 10%;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border: 1px solid #888;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', sans-serif;
+            position: relative;
+            overflow-y: auto;
+
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal .close {
+            color: black;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal .close:hover {
+            color: #333;
+        }
+
+        /* NEW CSS for the Google Form iframe optimization */
+        .google-form-wrapper {
+            flex-grow: 1;
+            /* Allows the wrapper to expand and take up remaining vertical space within .container */
+            width: 100%;
+            /* Occupy full width of its parent */
+            display: flex;
+            /* Enable flexbox for its content (the iframe) */
+            justify-content: center;
+            /* Center iframe horizontally */
+            align-items: stretch;
+            /* Make iframe stretch vertically to fill the wrapper's height */
+            overflow: hidden;
+            /* Hide scrollbars of the wrapper */
+            margin-top: 1rem;
+            /* Space above the form */
+            margin-bottom: 2rem;
+            /* Space below the form */
+        }
+
+        .google-form-wrapper iframe {
+            width: 100%;
+            /* Iframe takes 100% width of its wrapper */
+            height: 100%;
+            /* Iframe takes 100% height of its wrapper */
+            border: none;
+            /* Remove default iframe border */
+        }
+
+        /* Adjustments for smaller screens (mobile) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                /* Reduce container padding on small screens */
+            }
+
+            .google-form-wrapper {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                /* Reduce title font size */
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                /* Reduce subtitle font size */
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="confetti-canvas"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999;"></canvas>
+    <header>
+        <div class="left-header">
+            <a href="https://cerca.taxi">
+                <img src="cerca.taxi_logo.png" alt="CERCA.TAXI logo" class="logo" />
+            </a>
+            <a href="https://www.instagram.com/cerca.taxi/" target="_blank">
+                <img src="instagram.png" alt="CERCA.TAXI on Instagram" />
+            </a>
+            <a href="https://www.tiktok.com/@cerca.taxi" target="_blank">
+                <img src="tiktok.png" alt="Follow CERCA.TAXI on TikTok" />
+            </a>
+            <a href="https://www.youtube.com/@cercataxi" target="_blank">
+                <img src="youtube.png" alt="CERCA.TAXI on YouTube" />
+            </a>
+            <a href="https://www.youtube.com/@cercataxi?sub_confirmation=1" target="_blank">
+                <img src="subscribe.png" alt="Follow CERCA.TAXI on YouTube" />
+            </a>
+        </div>
+
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Language</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Stats</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>CERCA.TAXI | Referral</h1>
+        <h2>The tech that puts more in your pocket</h2>
+
+        <div class="google-form-wrapper">
+            <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLScQtD_vQYH9_C1O89iJK9MLF0DMemMCm5wGCTWuyg0ct2H9-Q/viewform?embedded=true"
+                frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+
+        <div class="buttons">
+        </div>
+    </div>
+
+    <footer>
+        <div class="marquee">
+            <div class="marquee-content">
+                Estem encantats d’anunciar que CERCA.TAXI està llesta per al llançament i actualment està en procés
+                d’acreditació amb
+                &nbsp;
+                <img src="amb_logo.png" alt="Logotip de la institució" style="height: 1em; vertical-align: middle;">
+                &nbsp;
+                | CERCA.TAXI és 100% GRATUÏTA per als usuaris, amb tarifes transparents i sense sorpreses.
+                Només hi ha conductors amb llicència, verificats per les autoritats locals.
+                Sempre se’t mostrarà el número de llicència i la matrícula del taxi abans del trajecte.
+            </div>
+        </div>
+
+        <div id="cookie-consent"
+            style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 1rem; display: none; z-index: 9999; text-align: center; font-family: 'Bebas Neue', sans-serif;">
+            <p style="margin-bottom: 1rem;">We use cookies to find your match in no time!</p>
+            <button onclick="handleCookieConsent(true)"
+                style="background: #FFD700; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; margin-right: 1rem; cursor: pointer;">Accept</button>
+            <button onclick="handleCookieConsent(false)"
+                style="background: #555; border: none; padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer;">Refuse</button>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <div id="modal-body">Loading...</div>
+        </div>
+    </div>
+
+    <script>
+        const countdownElement = document.getElementById('countdown-launch');
+
+        // CERCA.TAXI launch date (June 15, 2025)
+        const launchDate = new Date('June 15, 2025 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance <= 0) {
+                countdownElement.innerText = "Launched!";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerText = `Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to display immediately
+    </script>
+
+    <script>
+        function handleCookieConsent(accepted) {
+            localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'refused');
+            document.getElementById('cookie-consent').style.display = 'none';
+            // Optionally, trigger analytics setup here if cookies are accepted
+        }
+
+        // Show cookie consent prompt only if not already set
+        window.addEventListener('DOMContentLoaded', () => {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                document.getElementById('cookie-consent').style.display = 'block';
+            }
+        });
+    </script>
+
+    <script>
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modal-body");
+        const closeBtn = document.querySelector(".modal .close");
+
+        // Add click listeners to navigation links to open modal
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                // Determine the content file based on link text
+                const section = e.target.textContent.toLowerCase().replace(/\s+/g, '_');
+                showModal(section + "_cat.html");
+            });
+        });
+
+        // Function to show the modal and load content
+        function showModal(file) {
+            modal.classList.add("show"); // Add 'show' class to make modal visible
+
+            // Fetch content from the specified file
+            fetch(file)
+                .then(response => response.ok ? response.text() : Promise.reject("Not found"))
+                .then(html => {
+                    modalContent.innerHTML = html; // Insert fetched HTML into modal body
+                })
+                .catch(() => {
+                    modalContent.innerHTML = "<p>🚕 404 – You're Lost, but Not Alone!</p>"; // Display error if fetch fails
+                });
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.remove("show"); // Remove 'show' class to hide modal
+            // Reset modal content after transition
+            setTimeout(() => {
+                modalContent.innerHTML = "Loading...";
+            }, 400);
+        }
+
+        // Close modal when the close button is clicked
+        closeBtn.onclick = closeModal;
+
+        // Close modal when clicking outside the modal content
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+    <script>
+        const confettiCanvas = document.getElementById('confetti-canvas');
+        const ctx = confettiCanvas.getContext('2d');
+
+        let W = window.innerWidth;
+        let H = window.innerHeight;
+        confettiCanvas.width = W;
+        confettiCanvas.height = H;
+
+        const confetti = [];
+        const confettiCount = 150;
+        const colors = ['#FFD700', '#ff6347', '#00ced1', '#32cd32', '#ff69b4'];
+
+        for (let i = 0; i < confettiCount; i++) {
+            confetti.push({
+                x: Math.random() * W,
+                y: Math.random() * H - H,
+                r: Math.random() * 6 + 4,
+                d: Math.random() * confettiCount,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                tilt: Math.floor(Math.random() * 10) - 10,
+                tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+                tiltAngle: 0
+            });
+        }
+
+        let animationFrameId;
+        let fadeOut = false;
+        let opacity = 1;
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            ctx.globalAlpha = opacity;
+
+            confetti.forEach(conf => {
+                ctx.beginPath();
+                ctx.lineWidth = conf.r / 2;
+                ctx.strokeStyle = conf.color;
+                ctx.moveTo(conf.x + conf.tilt + conf.r / 4, conf.y);
+                ctx.lineTo(conf.x + conf.tilt, conf.y + conf.tilt + conf.r / 4);
+                ctx.stroke();
+            });
+
+            ctx.globalAlpha = 1; // Reset for next frame
+            update();
+        }
+
+        function update() {
+            confetti.forEach(conf => {
+                conf.tiltAngle += conf.tiltAngleIncremental;
+                conf.y += (Math.cos(conf.d) + 3 + conf.r / 2) / 2;
+                conf.x += Math.sin(conf.d);
+                conf.tilt = Math.sin(conf.tiltAngle) * 15;
+
+                if (conf.y > H) {
+                    conf.y = -10;
+                    conf.x = Math.random() * W;
+                }
+            });
+
+            if (fadeOut) {
+                opacity -= 0.02; // Speed of fade out
+                if (opacity <= 0) {
+                    cancelAnimationFrame(animationFrameId);
+                    ctx.clearRect(0, 0, W, H);
+                    confettiCanvas.style.display = 'none'; // Optional: remove from view
+                    return;
+                }
+            }
+        }
+
+        function animateConfetti() {
+            animationFrameId = requestAnimationFrame(animateConfetti);
+            draw();
+        }
+
+        // Start animation
+        animateConfetti();
+
+        // After 5s, trigger fade out
+        setTimeout(() => {
+            fadeOut = true;
+        }, 5000);
+
+        window.addEventListener('resize', () => {
+            W = window.innerWidth;
+            H = window.innerHeight;
+            confettiCanvas.width = W;
+            confettiCanvas.height = H;
+        });
+    </script>
+
+</body>
+
+</html>
